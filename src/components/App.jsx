@@ -1,11 +1,11 @@
 import { GlobalStyle } from 'components/GlobalStyle';
-import Feedback from "./Feedback";
+
 
 export const App = () => {
   return (
     <>
       <GlobalStyle/>
-      <Feedback/>
+      <h1>Hello world</h1>
     </>
   );
 };
