@@ -1,6 +1,8 @@
 import { Component } from "react";
-import { Formik, Form, Field } from 'formik';
 import { nanoid } from "nanoid";
+import ContactForm from "components/ContactForm";
+import Filter from "components/Filter";
+import { number } from "prop-types";
 
 export default class Phonebook extends Component {
     state = {
@@ -44,47 +46,25 @@ export default class Phonebook extends Component {
 
     render() {
         const normalizedFilterValue = this.state.filter.toLocaleLowerCase();
-        const filteredContacts = this.state.contacts.filter(contact => contact.name.toLocaleLowerCase().includes(normalizedFilterValue))
+        const filteredContacts = this.state.contacts.filter(contact => {
+            if (contact.name.toLocaleLowerCase().includes(normalizedFilterValue) || contact.number.toString().includes(normalizedFilterValue)) {
+            return true
+            }
+        });
       return (
         <div>
           <h1>Phonebook</h1>
-          <Formik initialValues={{
-        name: '',
-        number: '',
-              }}>
-          <Form onSubmit={this.handleSubmit}>
-            <label htmlFor="name">Name</label>
-            <Field
-  id="name"
-  type="text"
-  name="name"
-  pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-  title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-  placeholder="Name"
-  required
-/>
-              <label htmlFor="number">Number</label>
-              <Field
-  type="tel"
-  name="number"
-  pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-  title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-  placeholder="Number"
-  required
-/>
-          <button type="submit">Add contact</button>    
-          </Form>
-          </Formik>
+          <ContactForm onSubmit={this.handleSubmit} />
           <div>
             <h1>Contacts</h1>
-                  <input type="text" onChange={this.handleChangeFilter} value={this.state.filter} />
-            <ul>
-                {filteredContacts.map(contact => (
-                    <li key={contact.id} name={contact.name}>
-                        <p>{contact.name}: {contact.number}</p>
-                        <button name={contact.name} type="button" onClick={this.handleClick}>Delete</button>
-                    </li>
-                ))}
+                  <Filter handleChangeFilter={this.handleChangeFilter} filter={ this.state.filter} />
+                  <ul>
+                      {filteredContacts.map(contact => (
+                          <li key={contact.id} name={contact.name}>
+                              <p>{contact.name}: {contact.number}</p>
+                              <button name={contact.name} type="button" onClick={this.handleClick}>Delete</button>
+                          </li>
+                      ))}
             </ul>
           </div>
         </div>
