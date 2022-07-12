@@ -46,11 +46,13 @@ export default class Phonebook extends Component {
     render() {
         const {state, handleSubmit, handleChangeFilter, handleClick} = this;
         const normalizedFilterValue = state.filter.toLocaleLowerCase();
-        const filteredContacts = state.contacts.filter(contact => {
-            if (contact.name.toLocaleLowerCase().includes(normalizedFilterValue) || contact.number.toString().includes(normalizedFilterValue)) {
-                return true;
-            }
-        });
+        const filteredContacts = state.contacts.filter(contact => contact.name.toLocaleLowerCase().includes(normalizedFilterValue)
+//         {
+//            if (contact.name.toLocaleLowerCase().includes(normalizedFilterValue) || contact.number.toString().includes(normalizedFilterValue)) {
+//                 return true;
+//             }
+// }
+        );
       return (
         <div>
           <h1>Phonebook</h1>
