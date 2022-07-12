@@ -14,10 +14,10 @@ export default class Phonebook extends Component {
     {id: nanoid(), name: 'Hermione Kline', number: '443-89-12'},
     {id: nanoid(), name: 'Eden Clements', number: '645-17-79'},
     {id: nanoid(), name: 'Annie Copeland', number: '227-91-26'},
-    {id: nanoid(), name: 'Rosie Simpson', number: '459-12-56'},
-    {id: nanoid(), name: 'Hermione Kline', number: '443-89-12'},
-    {id: nanoid(), name: 'Eden Clements', number: '645-17-79'},
-    {id: nanoid(), name: 'Annie Copeland', number: '227-91-26'},
+    {id: nanoid(), name: 'Diana Colean', number: '456-12-78'},
+    {id: nanoid(), name: 'Margarett Kinn', number: '467-89-89'},
+    {id: nanoid(), name: 'Nick Cherchel', number: '678-17-90'},
+    {id: nanoid(), name: 'Anna Nonear', number: '234-91-56'},
 ],
     filter: ''
     }
