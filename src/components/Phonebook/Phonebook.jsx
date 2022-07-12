@@ -2,7 +2,6 @@ import { Component } from "react";
 import { nanoid } from "nanoid";
 import ContactForm from "components/ContactForm";
 import Filter from "components/Filter";
-import { number } from "prop-types";
 
 export default class Phonebook extends Component {
     state = {
@@ -13,7 +12,7 @@ export default class Phonebook extends Component {
     {id: nanoid(), name: 'Hermione Kline', number: '443-89-12'},
     {id: nanoid(), name: 'Eden Clements', number: '645-17-79'},
     {id: nanoid(), name: 'Annie Copeland', number: '227-91-26'},],
-        filter: ''
+    filter: ''
     }
 
     handleSubmit = async (e) => {
@@ -45,24 +44,25 @@ export default class Phonebook extends Component {
     }
 
     render() {
-        const normalizedFilterValue = this.state.filter.toLocaleLowerCase();
-        const filteredContacts = this.state.contacts.filter(contact => {
+        const {state, handleSubmit, handleChangeFilter, handleClick} = this;
+        const normalizedFilterValue = state.filter.toLocaleLowerCase();
+        const filteredContacts = state.contacts.filter(contact => {
             if (contact.name.toLocaleLowerCase().includes(normalizedFilterValue) || contact.number.toString().includes(normalizedFilterValue)) {
-            return true
+                return true;
             }
         });
       return (
         <div>
           <h1>Phonebook</h1>
-          <ContactForm onSubmit={this.handleSubmit} />
+          <ContactForm onSubmit={handleSubmit} />
           <div>
             <h1>Contacts</h1>
-                  <Filter handleChangeFilter={this.handleChangeFilter} filter={ this.state.filter} />
+                  <Filter handleChangeFilter={handleChangeFilter} filter={ state.filter} />
                   <ul>
                       {filteredContacts.map(contact => (
                           <li key={contact.id} name={contact.name}>
                               <p>{contact.name}: {contact.number}</p>
-                              <button name={contact.name} type="button" onClick={this.handleClick}>Delete</button>
+                              <button name={contact.name} type="button" onClick={handleClick}>Delete</button>
                           </li>
                       ))}
             </ul>
