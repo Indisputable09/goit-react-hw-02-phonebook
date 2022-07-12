@@ -23,7 +23,7 @@ const FormError = ({name}) => {
   )
  }
 
-const ContactForm = ({onSubmit, }) => {
+const ContactForm = ({onSubmit}) => {
     return (
     <Formik initialValues={{
         name: '',
@@ -38,6 +38,7 @@ const ContactForm = ({onSubmit, }) => {
               type="text"
               name="name"
               placeholder="Name"
+              required
             />
             <FormError name="name" />
             <label htmlFor="number">Number</label>
@@ -46,6 +47,7 @@ const ContactForm = ({onSubmit, }) => {
               type="tel"
               name="number"
               placeholder="Number"
+              required
             />
             <FormError name="number" />
             <button type="submit">Add contact</button>
