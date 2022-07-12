@@ -1,6 +1,8 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { object, string } from 'yup';
 import { Notify } from 'notiflix';
+import PropTypes from 'prop-types';
+import style from './ContactForm.module.css';
 
 const NAME_MATCH = /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/;
 const NUMBER_MATCH = /\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}/;
@@ -23,7 +25,7 @@ const FormError = ({name}) => {
   )
  }
 
-const ContactForm = ({onSubmit}) => {
+const ContactForm = ({ onSubmit }) => {
     return (
     <Formik initialValues={{
         name: '',
@@ -31,9 +33,10 @@ const ContactForm = ({onSubmit}) => {
       }}
         validationSchema={SignupSchema}
       >
-          <Form onSubmit={onSubmit}>
-            <label htmlFor="name">Name</label>
-            <Field
+          <Form className={style.form} onSubmit={onSubmit}>
+            <label className={style.label} htmlFor="name">Name</label>
+          <Field
+            className={style.input}
               id="name"
               type="text"
               name="name"
@@ -41,8 +44,9 @@ const ContactForm = ({onSubmit}) => {
               required
             />
             <FormError name="name" />
-            <label htmlFor="number">Number</label>
+            <label className={style.label} htmlFor="number">Number</label>
           <Field
+            className={style.input}
               id="number"
               type="tel"
               name="number"
@@ -50,10 +54,14 @@ const ContactForm = ({onSubmit}) => {
               required
             />
             <FormError name="number" />
-            <button type="submit">Add contact</button>
+            <button className={style.button} type="submit">Add contact</button>
           </Form>
           </Formik>
 )
+}
+
+ContactForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
 }
 
 export default ContactForm;

@@ -1,14 +1,22 @@
-const ContactList = ({filter, handleClick}) => {
+import PropTypes from 'prop-types';
+import { List, ListItem, Button, Line } from './ContactList.styled';
+
+const ContactList = ({ filter, handleClick }) => {
     return (
-    <ul>
+    <List>
                 {filter.map(contact => (
-                    <li key={contact.id} name={contact.name}>
-                        <p>{contact.name}: {contact.number}</p>
-                        <button name={contact.name} type="button" onClick={handleClick}>Delete</button>
-                    </li>
+                    <ListItem key={contact.id} name={contact.name}>
+                        <Line>{contact.name}: <span>{contact.number}</span></Line>
+                        <Button name={contact.name} type="button" onClick={handleClick}>Delete</Button>
+                    </ListItem>
                 ))}
-            </ul>
+            </List>
 )
+}
+
+ContactList.propTypes = {
+    filter: PropTypes.arrayOf(PropTypes.object),
+    handleClick: PropTypes.func.isRequired,
 }
 
 export default ContactList;
