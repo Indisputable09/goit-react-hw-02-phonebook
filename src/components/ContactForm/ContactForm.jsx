@@ -40,6 +40,7 @@ const ContactForm = ({ onSubmit }) => {
           id="name"
           type="text"
           name="name"
+          pattern={NAME_MATCH}
           placeholder="Name"
           required
         />
@@ -50,6 +51,7 @@ const ContactForm = ({ onSubmit }) => {
           id="number"
           type="tel"
           name="number"
+          pattern={NUMBER_MATCH}
           placeholder="Number"
           required
         />
