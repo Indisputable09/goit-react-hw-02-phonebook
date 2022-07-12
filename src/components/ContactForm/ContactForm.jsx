@@ -26,38 +26,38 @@ const FormError = ({name}) => {
  }
 
 const ContactForm = ({ onSubmit }) => {
-    return (
+  return (
     <Formik initialValues={{
-        name: '',
-        number: '',
-      }}
-        validationSchema={SignupSchema}
-      >
-          <Form className={style.form} onSubmit={onSubmit}>
-            <label className={style.label} htmlFor="name">Name</label>
-          <Field
-            className={style.input}
-              id="name"
-              type="text"
-              name="name"
-              placeholder="Name"
-              required
-            />
-            <FormError name="name" />
-            <label className={style.label} htmlFor="number">Number</label>
-          <Field
-            className={style.input}
-              id="number"
-              type="tel"
-              name="number"
-              placeholder="Number"
-              required
-            />
-            <FormError name="number" />
-            <button className={style.button} type="submit">Add contact</button>
-          </Form>
-          </Formik>
-)
+      name: '',
+      number: '',
+    }}
+      validationSchema={SignupSchema}
+    >
+      <Form className={style.form} onSubmit={onSubmit}>
+        <label className={style.label} htmlFor="name">Name</label>
+        <Field
+          className={style.input}
+          id="name"
+          type="text"
+          name="name"
+          placeholder="Name"
+          required
+        />
+        <FormError name="name" />
+        <label className={style.label} htmlFor="number">Number</label>
+        <Field
+          className={style.input}
+          id="number"
+          type="tel"
+          name="number"
+          placeholder="Number"
+          required
+        />
+        <FormError name="number" />
+        <button className={style.button} type="submit">Add contact</button>
+      </Form>
+    </Formik>
+  )
 }
 
 ContactForm.propTypes = {

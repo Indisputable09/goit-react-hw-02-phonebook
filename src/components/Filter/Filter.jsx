@@ -3,8 +3,8 @@ import { Input } from './Filter.styled';
 
 const Filter = ({ handleChangeFilter, filter }) => {
     return (
-    <Input type="text" onChange={handleChangeFilter} value={filter} placeholder='Search...' />
-)
+        <Input type="text" onChange={handleChangeFilter} value={filter} placeholder='Search...' />
+    )
 }
 
 Filter.propTypes = {

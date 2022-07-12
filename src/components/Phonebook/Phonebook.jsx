@@ -75,19 +75,19 @@ export default class Phonebook extends Component {
         return filteredContacts;
     }
     render() {
-        const {state, handleSubmit, handleChangeFilter, handleDeleteClick, createFilter} = this;
+        const { state, handleSubmit, handleChangeFilter, handleDeleteClick, createFilter } = this;
         const filteredContacts = createFilter();
-      return (
-        <Section>
-          <div>
-          <Title>Phonebook</Title>
-          <ContactForm onSubmit={handleSubmit} />
-          </div>
-          <ContactsSection title="Contacts">
-            <Filter handleChangeFilter={handleChangeFilter} filter={state.filter} />
-            <ContactList filter={filteredContacts} handleClick={handleDeleteClick} />
-          </ContactsSection>
-        </Section>
-      )
+        return (
+            <Section>
+                <div>
+                    <Title>Phonebook</Title>
+                    <ContactForm onSubmit={handleSubmit} />
+                </div>
+                <ContactsSection title="Contacts">
+                    <Filter handleChangeFilter={handleChangeFilter} filter={state.filter} />
+                    <ContactList filter={filteredContacts} handleClick={handleDeleteClick} />
+                </ContactsSection>
+            </Section>
+        )
     }
 }
