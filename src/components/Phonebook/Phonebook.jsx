@@ -56,7 +56,7 @@ export default class Phonebook extends Component {
         e.target.reset()
     }
 
-    handleClick = (e) => {
+    handleDeleteClick = (e) => {
         const filtered = this.state.contacts.filter(contact => (
           contact.name !== e.target.name
         ))
@@ -75,7 +75,7 @@ export default class Phonebook extends Component {
         return filteredContacts;
     }
     render() {
-        const {state, handleSubmit, handleChangeFilter, handleClick, createFilter} = this;
+        const {state, handleSubmit, handleChangeFilter, handleDeleteClick, createFilter} = this;
         const filteredContacts = createFilter();
       return (
         <Section>
@@ -85,7 +85,7 @@ export default class Phonebook extends Component {
           </div>
           <ContactsSection title="Contacts">
             <Filter handleChangeFilter={handleChangeFilter} filter={state.filter} />
-            <ContactList filter={filteredContacts} handleClick={handleClick} />
+            <ContactList filter={filteredContacts} handleClick={handleDeleteClick} />
           </ContactsSection>
         </Section>
       )
