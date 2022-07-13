@@ -11,7 +11,7 @@ export const Section = styled.div`
 
   min-height: 100vh;
   text-align: center;
-  background-image: linear-gradient(#45aef5 50%, #fae441 50%);
+  background-image: linear-gradient(#45aef5, #fae441 70%);
 `;
 
 export const Title = styled.h1`

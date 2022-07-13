@@ -4,8 +4,7 @@ import { Notify } from 'notiflix';
 import PropTypes from 'prop-types';
 import style from './ContactForm.module.css';
 
-const NAME_MATCH = /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/;
-const NUMBER_MATCH = /\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}/;
+const NAME_MATCH = "^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$";
 
 const nameError = "Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan";
 const nameNumber = "Phone number must be digits and can contain spaces, dashes, parentheses and can start with +";
@@ -16,7 +15,7 @@ const requiredError = 'This field is required'
      .matches(NAME_MATCH, nameError),
    number: string()
      .required(requiredError)
-     .matches(NUMBER_MATCH, nameNumber),
+     .matches(/\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}/, nameNumber),
  });
 
 const FormError = ({name}) => {
@@ -51,7 +50,7 @@ const ContactForm = ({ onSubmit }) => {
           id="number"
           type="tel"
           name="number"
-          pattern={NUMBER_MATCH}
+          pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           placeholder="Number"
           required
         />
